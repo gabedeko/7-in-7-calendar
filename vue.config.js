@@ -1,3 +1,3 @@
 module.exports = {
-  publicPath: '/project name/'
+  publicPath: '/7-in-7-calendar/'
 }
