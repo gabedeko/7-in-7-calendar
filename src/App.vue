@@ -1,121 +1,17 @@
 <template>
 	<div id="app">
-		<div class="calendar-controls">
-			<div v-if="message" class="notification is-success">{{ message }}</div>
 
-			<div class="box">
-				<h4 class="title is-5">Play with the options!</h4>
+		<!--div class="calendar-controls">
+      <h3 class="project-info">Project Info</h3>
+			<div v-if="message" class="project-container">{{ message }}
+      
+      </div>
 
-				<div class="field">
-					<label class="label">Period UOM</label>
-					<div class="control">
-						<div class="select">
-							<select v-model="displayPeriodUom">
-								<option>month</option>
-								<option>week</option>
-								<option>year</option>
-							</select>
-						</div>
-					</div>
-				</div>
-
-				<div class="field">
-					<label class="label">Period Count</label>
-					<div class="control">
-						<div class="select">
-							<select v-model="displayPeriodCount">
-								<option :value="1">1</option>
-								<option :value="2">2</option>
-								<option :value="3">3</option>
-							</select>
-						</div>
-					</div>
-				</div>
-
-				<div class="field">
-					<label class="label">Starting day of the week</label>
-					<div class="control">
-						<div class="select">
-							<select v-model="startingDayOfWeek">
-								<option
-									v-for="(d, index) in dayNames"
-									:key="index"
-									:value="index"
-								>
-									{{ d }}
-								</option>
-							</select>
-						</div>
-					</div>
-				</div>
-
-				<div class="field">
-					<label class="checkbox">
-						<input v-model="useTodayIcons" type="checkbox" />
-						Use icon for today's period
-					</label>
-				</div>
-
-				<div class="field">
-					<label class="checkbox">
-						<input v-model="displayWeekNumbers" type="checkbox" />
-						Show week number
-					</label>
-				</div>
-
-				<div class="field">
-					<label class="checkbox">
-						<input v-model="showTimes" type="checkbox" />
-						Show times
-					</label>
-				</div>
-
-				<div class="field">
-					<label class="label">Themes</label>
-					<label class="checkbox">
-						<input v-model="useDefaultTheme" type="checkbox" />
-						Default
-					</label>
-				</div>
-
-				<div class="field">
-					<label class="checkbox">
-						<input v-model="useHolidayTheme" type="checkbox" />
-						Holidays
-					</label>
-				</div>
-			</div>
-
-			<div class="box">
-				<div class="field">
-					<label class="label">Title</label>
-					<div class="control">
-						<input v-model="newItemTitle" class="input" type="text" />
-					</div>
-				</div>
-
-				<div class="field">
-					<label class="label">Start date</label>
-					<div class="control">
-						<input v-model="newItemStartDate" class="input" type="date" />
-					</div>
-				</div>
-
-				<div class="field">
-					<label class="label">End date</label>
-					<div class="control">
-						<input v-model="newItemEndDate" class="input" type="date" />
-					</div>
-				</div>
-
-				<button class="button is-info" @click="clickTestAddItem">
-					Add Item
-				</button>
-			</div>
-		</div>
+      <div v-if="message_class" class="project-link">{{ message_class }}</div>
+		</div-->
 		<div class="calendar-parent">
 			<calendar-view
-				:items="items"
+        :items="items"
 				:show-date="showDate"
 				:time-format-options="{ hour: 'numeric', minute: '2-digit' }"
 				:enable-drag-drop="true"
@@ -172,9 +68,9 @@ export default {
 	data() {
 		return {
 			/* Show the current month, and give it some fake items to show */
-			showDate: this.thisMonth(1),
+			showDate: this.thisMonth(21),
 			message: "",
-			startingDayOfWeek: 0,
+			startingDayOfWeek: 3,
 			disablePast: false,
 			disableFuture: false,
 			displayPeriodUom: "week",
@@ -190,76 +86,54 @@ export default {
 			useHolidayTheme: true,
 			useTodayIcons: false,
 			items: [
-				{
-					id: "e0",
-					startDate: "2018-01-05",
-				},
-				{
-					id: "e1",
-					startDate: this.thisMonth(15, 18, 30),
-				},
-				{
-					id: "e2",
-					startDate: this.thisMonth(15),
-					title: "Single-day item with a long title",
-				},
-				{
-					id: "e3",
-					startDate: this.thisMonth(7, 9, 25),
-					endDate: this.thisMonth(10, 16, 30),
-					title: "Multi-day item with a long title and times",
-				},
-				{
-					id: "e4",
-					startDate: this.thisMonth(20),
-					title: "My Birthday!",
-					classes: "birthday",
-					url: "https://en.wikipedia.org/wiki/Birthday",
-				},
-				{
-					id: "e5",
-					startDate: this.thisMonth(5),
-					endDate: this.thisMonth(12),
-					title: "Multi-day item",
-					classes: "purple",
-				},
-				{
-					id: "foo",
-					startDate: this.thisMonth(29),
-					title: "Same day 1",
-				},
-				{
-					id: "e6",
-					startDate: this.thisMonth(29),
-					title: "Same day 2",
-					classes: "orange",
-				},
-				{
-					id: "e7",
-					startDate: this.thisMonth(29),
-					title: "Same day 3",
-				},
-				{
-					id: "e8",
-					startDate: this.thisMonth(29),
-					title: "Same day 4",
-					classes: "orange",
-				},
-				{
-					id: "e9",
-					startDate: this.thisMonth(29),
-					title: "Same day 5",
-				},
-				{
-					id: "e10",
-					startDate: this.thisMonth(29),
-					title: "Same day 6",
-					classes: "orange",
-				},
-				{
-					id: "e11",
-					startDate: this.thisMonth(29),
-					title: "Same day 7",
+        {
+					id: "1_7",
+          startDate: this.thisMonth(21),
+          title: "<h5 class='project-title'>1-in-7 102120: Crayoninator 2000</h5>\n" +
+                  "<img class='project-img' src='https://cpb-us-w2.wpmucdn.com/portfolio.newschool.edu/dist/1/32191/files/2020/10/crayoninator_4-768x1024.jpg' />\n" +
+                  "<a class='project-link' href='http://portfolio.newschool.edu/dekog666/2020/10/22/1-in-7-102120-crayoninator/' target='_blank'>View Project</a>" ,
+        },
+        {
+					id: "2_7",
+					startDate: this.thisMonth(22),
+          title: "<h5 class='project-title'>2-in-7 102220: Automatic Plant Sprayer</h5>\n" +
+                  "<img class='project-img' src='https://cpb-us-w2.wpmucdn.com/portfolio.newschool.edu/dist/1/32191/files/2020/10/IMG_0065-768x1024.jpg' />\n" +
+                  "<a class='project-link' href='http://portfolio.newschool.edu/dekog666/2020/10/23/2-in-7-102220-automatic-plant-sprayer/' target='_blank'>View Project</a>" ,
+        },
+        {
+					id: "3_7",
+					startDate: this.thisMonth(23),
+					title: "<h5 class='project-title'>3-in-7 102320: Virtual Dance Performance Setup</h5>\n" +
+                  "<img class='project-img' src='https://cpb-us-w2.wpmucdn.com/portfolio.newschool.edu/dist/1/32191/files/2020/10/Capture_0_-768x477.jpg' />\n" +
+                  "<a class='project-link' href='http://portfolio.newschool.edu/dekog666/2020/10/23/3-in-7-102220-virtual-dance-performance-setup/' target='_blank'>View Project</a>" ,
+        },
+        {
+					id: "4_7",
+					startDate: this.thisMonth(24),
+					title: "<h5 class='project-title'>4-in-7 102420: Submitting 2020 Mail-In Presidential Electoral Ballot</h5>\n" +
+                  "<img class='project-img' src='https://cpb-us-w2.wpmucdn.com/portfolio.newschool.edu/dist/1/32191/files/2020/10/InkedIMG_0076_LI-768x1024.jpg' />\n" +
+                  "<a class='project-link' href='http://portfolio.newschool.edu/dekog666/2020/10/25/4-in-7-102420-submitting-2020-mail-in-presidential-electoral-ballot/' target='_blank'>View Project</a>" ,
+        },
+        {
+					id: "5_7",
+					startDate: this.thisMonth(25),
+					title: "<h5 class='project-title'>5-in-7 102520: Mask Survey</h5>\n" +
+                  "<img class='project-img' src='https://cpb-us-w2.wpmucdn.com/portfolio.newschool.edu/dist/1/32191/files/2020/10/IMG_0077-768x1024.jpg' />\n" +
+                  "<a class='project-link' href='http://portfolio.newschool.edu/dekog666/2020/10/25/5-in-7-102520-mask-survey/' target='_blank'>View Project</a>" ,
+        },
+        {
+					id: "6_7",
+					startDate: this.thisMonth(26),
+					title: "<h5 class='project-title'>6-in-7 102620: Painting</h5>\n" +
+                  "<img class='project-img' src='https://cpb-us-w2.wpmucdn.com/portfolio.newschool.edu/dist/1/32191/files/2020/10/IMG_0080-768x576.jpg' />\n" +
+                  "<a class='project-link' href='http://portfolio.newschool.edu/dekog666/2020/10/26/6-in-7-102620-painting/' target='_blank'>View Project</a>" ,
+        },
+        {
+					id: "7_7",
+					startDate: this.thisMonth(27),
+          title: "<h5 class='project-title'>7-in-7 102720: 7-in-7 Calendar</h5>\n" +
+                  "<img class='project-img' src='https://portfolio.newschool.edu/dekog666/files/2020/10/3546789jk.jpg' />\n" +
+                  "<a class='project-link' href='http://portfolio.newschool.edu/dekog666/2020/10/27/7-in-7-102720-7-in7-calendar/' target='_blank'>View Project</a>" ,
 				},
 			],
 		}
@@ -301,7 +175,7 @@ export default {
 			this.message = `You clicked: ${d.toLocaleDateString()}`
 		},
 		onClickItem(e) {
-			this.message = `You clicked: ${e.title}`
+      this.message = `${e.title}`
 		},
 		setShowDate(d) {
 			this.message = `Changing calendar view to ${d.toLocaleDateString()}`
@@ -342,11 +216,15 @@ body {
 	height: 100%;
 	margin: 0;
 	background-color: #f7fcff;
+  font-family: 'Roboto', sans-serif;
+}
+body, div, p, h1, h2, h3, h4, h5, a  {
+  font-family: 'Roboto', sans-serif;
 }
 #app {
 	display: flex;
 	flex-direction: row;
-	font-family: Calibri, sans-serif;
+	font-family: 'Roboto', sans-serif;
 	width: 95vw;
 	min-width: 30rem;
 	max-width: 100rem;
@@ -384,18 +262,24 @@ body {
 	content: "\1F382"; /* Birthday cake */
 	margin-right: 0.5em;
 }
+.title, .subtitle, .project-info, .project-title {
+  text-align: center;
+}
+.project-title {
+  margin-bottom:24px;
+  width: 100%;
+}
+.project-img {
+  width: 100%;
+}
+.project-link {
+  margin-top: 24px; 
+  text-transform: uppercase;
+}
+.cv-item{
+  white-space: normal!important;
+  text-align: center;
+}
 </style>
 
-    © 2020 GitHub, Inc.
-    Terms
-    Privacy
-    Security
-    Status
-    Help
-    Contact GitHub
-    Pricing
-    API
-    Training
-    Blog
-    About
 
