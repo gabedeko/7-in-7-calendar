@@ -68,7 +68,7 @@ export default {
 	data() {
 		return {
 			/* Show the current month, and give it some fake items to show */
-			showDate: this.thisMonth(21),
+			showDate: this.October(21),
 			message: "",
 			startingDayOfWeek: 3,
 			disablePast: false,
@@ -88,49 +88,49 @@ export default {
 			items: [
         {
 					id: "1_7",
-          startDate: this.thisMonth(21),
+          startDate: this.October(21),
           title: "<h5 class='project-title'>1-in-7 102120: Crayoninator 2000</h5>\n" +
                   "<img class='project-img' src='https://cpb-us-w2.wpmucdn.com/portfolio.newschool.edu/dist/1/32191/files/2020/10/crayoninator_4-768x1024.jpg' />\n" +
                   "<a class='project-link' href='http://portfolio.newschool.edu/dekog666/2020/10/22/1-in-7-102120-crayoninator/' target='_blank'>View Project</a>" ,
         },
         {
 					id: "2_7",
-					startDate: this.thisMonth(22),
+					startDate: this.October(22),
           title: "<h5 class='project-title'>2-in-7 102220: Automatic Plant Sprayer</h5>\n" +
                   "<img class='project-img' src='https://cpb-us-w2.wpmucdn.com/portfolio.newschool.edu/dist/1/32191/files/2020/10/IMG_0065-768x1024.jpg' />\n" +
                   "<a class='project-link' href='http://portfolio.newschool.edu/dekog666/2020/10/23/2-in-7-102220-automatic-plant-sprayer/' target='_blank'>View Project</a>" ,
         },
         {
 					id: "3_7",
-					startDate: this.thisMonth(23),
+					startDate: this.October(23),
 					title: "<h5 class='project-title'>3-in-7 102320: Virtual Dance Performance Setup</h5>\n" +
                   "<img class='project-img' src='https://cpb-us-w2.wpmucdn.com/portfolio.newschool.edu/dist/1/32191/files/2020/10/Capture_0_-768x477.jpg' />\n" +
                   "<a class='project-link' href='http://portfolio.newschool.edu/dekog666/2020/10/23/3-in-7-102220-virtual-dance-performance-setup/' target='_blank'>View Project</a>" ,
         },
         {
 					id: "4_7",
-					startDate: this.thisMonth(24),
+					startDate: this.October(24),
 					title: "<h5 class='project-title'>4-in-7 102420: Submitting 2020 Mail-In Presidential Electoral Ballot</h5>\n" +
                   "<img class='project-img' src='https://cpb-us-w2.wpmucdn.com/portfolio.newschool.edu/dist/1/32191/files/2020/10/InkedIMG_0076_LI-768x1024.jpg' />\n" +
                   "<a class='project-link' href='http://portfolio.newschool.edu/dekog666/2020/10/25/4-in-7-102420-submitting-2020-mail-in-presidential-electoral-ballot/' target='_blank'>View Project</a>" ,
         },
         {
 					id: "5_7",
-					startDate: this.thisMonth(25),
+					startDate: this.October(25),
 					title: "<h5 class='project-title'>5-in-7 102520: Mask Survey</h5>\n" +
                   "<img class='project-img' src='https://cpb-us-w2.wpmucdn.com/portfolio.newschool.edu/dist/1/32191/files/2020/10/IMG_0077-768x1024.jpg' />\n" +
                   "<a class='project-link' href='http://portfolio.newschool.edu/dekog666/2020/10/25/5-in-7-102520-mask-survey/' target='_blank'>View Project</a>" ,
         },
         {
 					id: "6_7",
-					startDate: this.thisMonth(26),
+					startDate: this.October(26),
 					title: "<h5 class='project-title'>6-in-7 102620: Painting</h5>\n" +
                   "<img class='project-img' src='https://cpb-us-w2.wpmucdn.com/portfolio.newschool.edu/dist/1/32191/files/2020/10/IMG_0080-768x576.jpg' />\n" +
                   "<a class='project-link' href='http://portfolio.newschool.edu/dekog666/2020/10/26/6-in-7-102620-painting/' target='_blank'>View Project</a>" ,
         },
         {
 					id: "7_7",
-					startDate: this.thisMonth(27),
+					startDate: this.October(27),
           title: "<h5 class='project-title'>7-in-7 102720: 7-in-7 Calendar</h5>\n" +
                   "<img class='project-img' src='https://portfolio.newschool.edu/dekog666/files/2020/10/3546789jk.jpg' />\n" +
                   "<a class='project-link' href='http://portfolio.newschool.edu/dekog666/2020/10/27/7-in-7-102720-7-in7-calendar/' target='_blank'>View Project</a>" ,
@@ -168,6 +168,10 @@ export default {
 		thisMonth(d, h, m) {
 			const t = new Date()
 			return new Date(t.getFullYear(), t.getMonth(), d, h || 0, m || 0)
+		},
+		October(d){
+			const t = new Date('October 21, 2020 00:00:00')
+			return new Date(t.getFullYear(), t.getMonth(), d)
 		},
 		onClickDay(d) {
 			this.selectionStart = null
